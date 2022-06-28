@@ -1,89 +1,58 @@
 <?php
   include('conexao.php');
   session_start();
-  // $_SESSION['user'] = $usuario['id'];
-  // $_SESSION['senha'] = $usuario['senha'];
+  $_SESSION['user'] = $_SESSION['user'];
+  $_SESSION['senha'] = $_SESSION['senha'];
+  if(isset($_POST['titulo']) && isset($_POST['mensagem']) && isset($_FILES['ilustracao']) && isset($_POST['categoria']) && isset($_POST['email'])) {
 
-  if(isset($_POST['email']) || isset($_POST['senha'])) {
-    if(strlen($_POST['email'])==0){
+    $titulo = $mysqli->real_escape_string($_POST['titulo']);
+    $mensagem = $mysqli->real_escape_string($_POST['mensagem']);
+    $categoria = $mysqli->real_escape_string($_POST['categoria']);
+    $dono = $mysqli->real_escape_string($_POST['email']);
+    
+    $id = $_SESSION['user'];
 
-      echo "<script language='javascript' type='text/javascript'>alert('Preencha seu email corretamente');window.location.href='index.php';</script>";
-
-
-    }else if(strlen($_POST['senha'])==0){
-
-      echo "<script language='javascript' type='text/javascript'>alert('Preencha sua senha corretamente');window.location.href='index.php';</script>";
-      // header("Location: index.php");
-
-
-    }else {
-
-      $email = $mysqli->real_escape_string($_POST['email']);
-      $senha = $mysqli->real_escape_string($_POST['senha']);
-
-      $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
-      $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-
-      $quantidade = $sql_query->num_rows;
-
-      if($quantidade == 1){
-
-        $usuario = $sql_query->fetch_assoc();
-        if(!isset($_SESSION)){
-          session_start();
-        }
-        $_SESSION['email']= $usuario['email'];
-        $_SESSION['senha']= $usuario['senha'];
-        $_SESSION['user'] = $usuario['id'];
-
-      header("Location: pagina-principal.php");
-
-      }else{
-        echo "<script language='javascript' type='text/javascript'>alert('Falha ao logar! E-mail ou senha incorretos');window.location.href='index.php';</script>";
-        sleep(1);
-        // header("Location: index.php");
-
-      }
+    $ilustracao = $_FILES['ilustracao'];
+    
+    $pasta = "arquivos/";
+    $nomeDoArquivo = $ilustracao['name'];
+    $novoNomeDoArquivo = uniqid();
+    $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
+    
+    if($extensao != 'jpg' && $extensao != 'png'){
+      die("Tipo do arquivo não aceito.");
     }
+    $localilustracao = $pasta . $novoNomeDoArquivo . "." . $extensao;
+    $deuCerto = move_uploaded_file($ilustracao["tmp_name"], $localilustracao);
+    $_SESSION['ilustracao'] = $localilustracao;
+    if($deuCerto){
+      $mysqli->query("INSERT INTO imagens_perfil (nome_img, path, usuario_id) VALUES ('$novoNomeDoArquivo', '$localilustracao', '$id')") or die($mysqli->error);
+    }
+    
+    $sql_code = "INSERT INTO anuncio (`dono`, `descricao`, `usuario_id`, `categoria_id`, `titulo`, `imagem_path`) VALUES ('{$dono}', '{$mensagem}', '{$id}', '{$categoria}', '{$titulo}', '{$localilustracao}')";
+    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+    
+    echo "<script language='javascript' type='text/javascript'>alert('Anuncio enviado com sucesso!');window.location.href='index.php';</script>";
+    
+    header("Location: anuncios.php");
   }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
-  <!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Servicin</title>
-  
-  <!-- FAVICON -->
   <link href="img/favicon.png" rel="shortcut icon">
-  <!-- PLUGINS CSS STYLE -->
-  <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
-  <!-- Bootstrap -->
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
-  <!-- Font Awesome -->
   <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <!-- Owl Carousel -->
   <link href="plugins/slick-carousel/slick/slick.css" rel="stylesheet">
   <link href="plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
-  <!-- Fancy Box -->
   <link href="plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
   <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-  <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
-
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
 </head>
 
 <body class="body-wrapper">
@@ -94,7 +63,7 @@
       <div class="row">
         <div class="col-md-12">
           <nav class="navbar navbar-expand-lg navbar-light navigation justify-content-center">
-            <img src="images/logoOficial.png" alt="">
+              <img src="images/logoOficial.png" alt="">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -105,34 +74,46 @@
     </div>
   </section>
 
-  <section class="login py-5 border-top-1">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-8 align-item-center">
-                <div class="border">
-                    <h3 class="bg-gray p-4">Login</h3>
-                    <form action="#" method="POST">
-                        <fieldset class="p-4">
-                            <input type="text" placeholder="Nome de usuário" value="<?php echo isset($_SESSION['email']) ? isset($_SESSION['email']) : '';?>" name="email" class="border p-3 w-100 my-2">
-                            <input type="password" placeholder="Senha" name="senha" value="<?php echo isset($_SESSION['senha']) ? $_SESSION['senha'] : '' ;?>" class="border p-3 w-100 my-2">
-                            <!-- <div class="loggedin-forgot">
-                                    <input type="checkbox" id="keep-me-logged-in">
-                                    <label for="keep-me-logged-in" class="pt-3 pb-2">Me mantenha logado</label>
-                            </div> -->
-                            <button type="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Log in</button>
-                            <!-- <a class="mt-3 d-block  text-primary" href="#">Esqueceu a senha?</a> -->
-                            <a class="mt-3 d-inline-block text-primary" href="registrar.php">Registrar</a>
-                        </fieldset>
-                    </form>
-                </div>
+  <section class="container">
+    <div class="col-md-12">
+      <form enctype="multipart/form-data" method="POST" action="">
+        <fieldset class="p-4">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-lg-6 py-2">
+                <input name="titulo" type="text" placeholder="Título *" class="form-control" required>
+              </div>
+              <div class="col-lg-6 pt-2">
+                <input name="email" type="email" placeholder="Email *" value="<?php echo isset($_SESSION['email']) ? ($_SESSION['email']) : '';?>" class="form-control" required>
+              </div>
             </div>
-        </div>
+          </div>
+          <select name="categoria" id="algum" class="form-control w-100">
+            <option value="">Selecione sua categoria</option>
+            <option value="1">Diarista</option>
+            <option value="3>Pintor</option>
+            <option value="5">Pedreiro</option>
+            <option value="7">Marceneiro</option>
+            <option value="9">Eletricista</option>
+          </select>
+          <textarea name="mensagem" id=""  placeholder="Mensagem *" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+          <div class="form-group">
+						<div class="widget personal-info">
+							<h3 class="widget-header user">Adicionar foto</h3>
+								<div class="form-group choose-file d-inline-flex">
+									<i class="fa fa-user text-center px-3"></i>
+									<input type="file" class="form-control-file mt-2 pt-1" name="ilustracao" id="input-file">
+								</div>
+						</div>
+					</div>
+          <div class="btn-grounp">
+            <button type="submit" class="btn btn-primary mt-2 float-right">ENVIAR</button>
+          </div>
+        </fieldset>
+      </form>
     </div>
-</section>
+  </section>
 
-<!--============================
-=            Footer            =
-=============================-->
 
 <footer class="footer section section-sm ">
   <div class="container">

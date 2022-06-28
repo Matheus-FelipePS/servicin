@@ -1,3 +1,11 @@
+<?php
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -44,7 +52,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg navbar-light navigation">
-					<a class="navbar-brand" href="pagina-principal.html">
+					<a class="navbar-brand" href="pagina-principal.php">
 						<img src="images/logoOficial.png" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -54,7 +62,7 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
 							<li class="nav-item active">
-								<a class="nav-link" href="pagina-principal.html">Início</a>
+								<a class="nav-link" href="pagina-principal.php">Início</a>
 							</li>
 							<li class="nav-item dropdown dropdown-slide">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Anúncios<span><i class="fa fa-angle-down"></i></span>
@@ -62,8 +70,8 @@
 
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="category.html">Anúncios</a>
-									<a class="dropdown-item" href="dashboard-my-ads.html">Meus anúncios</a>
+									<a class="dropdown-item" href="anuncios.php">Anúncios</a>
+									<a class="dropdown-item" href="meus-anuncios.php">Meus anúncios</a>
 								</div>
 							</li>
 							<li class="nav-item dropdown dropdown-slide">
@@ -72,20 +80,20 @@
 								</a>
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="sobre-nós.html">Sobre nós</a>
-									<a class="dropdown-item" href="contate-nos.html">Contate-nos</a>
-									<a class="dropdown-item" href="perfil-usuário.html">Meu Perfil</a>
-									<a class="dropdown-item" href="category.html">Categorias</a>
+									<a class="dropdown-item" href="sobre-nos.php">Sobre nós</a>
+									<a class="dropdown-item" href="contate-nos.php">Contate-nos</a>
+									<a class="dropdown-item" href="perfil-usuario.php">Meu Perfil</a>
+									<a class="dropdown-item" href="anuncios.php">Categorias</a>
 
 								</div>
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.php">Login</a>
+								<a class="nav-link login-button" href="index.php">Logout</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white add-button" href="Ad-listing.html"><i class="fa fa-plus-circle"></i> Adicionar Serviço</a>
+								<a class="nav-link text-white add-button" style="background-color:#2568B6 ;" href="addServico.php"><i class="fa fa-plus-circle"></i> Adicionar Serviço</a>
 							</li>
 						</ul>
 					</div>
@@ -112,12 +120,12 @@
 						<h2>Categorias Populares</h2>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-bed"></i> Diarista</a></li>
+								<a href="anuncios.php"><i class="fa fa-bed"></i> Diarista</a></li>
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-grav"></i> Personal</a>
+								<a href="anuncios.php"><i class="fa fa-grav"></i> Personal</a>
 							</li>
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-car"></i> Mecânico</a>
+								<a href="anuncios.php"><i class="fa fa-car"></i> Mecânico</a>
 							</li>
 						</ul>
 					</div>
@@ -364,10 +372,10 @@
 								<h4>Empregos</h4>
 							</div>
 							<ul class="category-list" >
-								<li><a href="category.html">Pedreiro <span>93</span></a></li>
-								<li><a href="category.html">Jardineiro <span>233</span></a></li>
-								<li><a href="category.html">Babá  <span>183</span></a></li>
-								<li><a href="category.html">Professor particular <span>343</span></a></li>
+								<li><a href="anuncios.php">Pedreiro <span>93</span></a></li>
+								<li><a href="anuncios.php">Jardineiro <span>233</span></a></li>
+								<li><a href="anuncios.php">Babá  <span>183</span></a></li>
+								<li><a href="anuncios.php">Professor particular <span>343</span></a></li>
 							</ul>
 						</div>
 					</div> <!-- /Category List -->
@@ -379,10 +387,10 @@
 								<h4>Mecânico</h4>
 							</div>
 							<ul class="category-list" >
-								<li><a href="category.html">Carro <span>193</span></a></li>
-								<li><a href="category.html">Moto<span>23</span></a></li>
-								<li><a href="category.html">Bicicleta <span>33</span></a></li>
-								<li><a href="category.html">Caminhão <span>73</span></a></li>
+								<li><a href="anuncios.php">Carro <span>193</span></a></li>
+								<li><a href="anuncios.php">Moto<span>23</span></a></li>
+								<li><a href="anuncios.php">Bicicleta <span>33</span></a></li>
+								<li><a href="anuncios.php">Caminhão <span>73</span></a></li>
 							</ul>
 						</div>
 					</div> <!-- /Category List -->
@@ -394,10 +402,10 @@
 								<h4>Veterinário</h4>
 							</div>
 							<ul class="category-list" >
-								<li><a href="category.html">Gato <span>65</span></a></li>
-								<li><a href="category.html">Cachorro <span>23</span></a></li>
-								<li><a href="category.html">Pássaros  <span>113</span></a></li>
-								<li><a href="category.html">Coelho<span>43</span></a></li>
+								<li><a href="anuncios.php">Gato <span>65</span></a></li>
+								<li><a href="anuncios.php">Cachorro <span>23</span></a></li>
+								<li><a href="anuncios.php">Pássaros  <span>113</span></a></li>
+								<li><a href="anuncios.php">Coelho<span>43</span></a></li>
 							</ul>
 						</div>
 					</div> <!-- /Category List -->
@@ -410,10 +418,10 @@
 								<h4>Serviços</h4>
 							</div>
 							<ul class="category-list" >
-								<li><a href="category.html">Manutenção eletrônicos <span>93</span></a></li>
-								<li><a href="category.html">Lavar carro <span>233</span></a></li>
-								<li><a href="category.html">Comprar roupas usadas  <span>183</span></a></li>
-								<li><a href="category.html">Motoboy<span>343</span></a></li>
+								<li><a href="anuncios.php">Manutenção eletrônicos <span>93</span></a></li>
+								<li><a href="anuncios.php">Lavar carro <span>233</span></a></li>
+								<li><a href="anuncios.php">Comprar roupas usadas  <span>183</span></a></li>
+								<li><a href="anuncios.php">Motoboy<span>343</span></a></li>
 							</ul>
 						</div>
 					</div> <!-- /Category List -->
@@ -440,7 +448,7 @@
 					<h2>Comece hoje para obter mais exposição e expandir seus negócios</h2>
 					<ul class="list-inline mt-30">
 						<li class="list-inline-item"><a class="btn btn-main" href="single.html">Adicionar serviço</a></li>
-						<li class="list-inline-item"><a class="btn btn-secondary" href="category.html">Lista de anúncios</a></li>
+						<li class="list-inline-item"><a class="btn btn-secondary" href="anuncios.php">Lista de anúncios</a></li>
 					</ul>
 				</div>
 			</div>
@@ -453,95 +461,65 @@
 =            Footer            =
 =============================-->
 
-<footer class="footer section section-sm">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-7 col-md-7 offset-md-1 offset-lg-0">
-        <!-- About -->
-        <div class="block about">
-          <!-- footer logo -->
-          <img src="images/logoOficial.png" alt="">
-          <!-- description -->
-          <p class="alt-color">Somos uma empresa especializada em trabalhar juntamente com você, para que seu trabalho 
-            seja divulgado da maneira correta e para você que procura contratar alguém, saia satisfeito com o serviço 
-          dos nossos trabalhadores parceiros.</p>
-        </div>
-      </div>
-
-     <!-- Promotion -->
-      <div class="col-lg-5 col-md-7">
-        <!-- App promotion -->
-        <div class="block-2 app-promotion">
-          <div class="mobile d-flex">
-            <a href="">
-              <!-- Icon -->
-              <img src="images/footer/phone-icon.png" alt="mobile-icon">
-            </a>
-            <p>Baixe o aplicativo mobile </p>
-          </div>
-          <div class="download-btn d-flex my-3">
-            <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-            <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Container End -->
-</footer>
-<!-- Footer Bottom -->
-<footer class="footer-bottom">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-12">
-        <!-- Copyright -->
-        <div class="copyright">
-          <p>Copyright © <script>
-              var CurrentYear = new Date().getFullYear()
-              document.write(CurrentYear)
-            </script> All Rights Reserved by Serviçim.com</p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-12">
-        <!-- Social Icons -->
-        <ul class="social-media-icons text-right">
-          <li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-vimeo" href=""></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- Container End -->
-  <!-- To Top -->
-  <div class="top-to">
-    <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
-  </div>
-</footer>
-
-<!-- JAVASCRIPTS -->
-<script src="plugins/jQuery/jquery.min.js"></script>
-<script src="plugins/bootstrap/js/popper.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
-  <!-- tether js -->
-<script src="plugins/tether/js/tether.min.js"></script>
-<script src="plugins/raty/jquery.raty-fa.js"></script>
-<script src="plugins/slick-carousel/slick/slick.min.js"></script>
-<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
-<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-<script src="plugins/google-map/gmap.js"></script>
-<script src="js/script.js"></script>
-
-</body>
-
-</html>
+<footer class="footer section section-sm ">
+	<div class="container">
+	  <div class="row justify-content-center">
+		<div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0 ">
+		  <div class="block about ">
+			<img src="images/logoOficial.png" alt="">
+			<p class="alt-color" style="text-align: justify;">Somos uma empresa especializada em trabalhar juntamente com você, para que seu trabalho 
+			  seja divulgado da maneira correta e para você que procura contratar alguém, saia satisfeito com o serviço 
+			dos nossos trabalhadores parceiros.</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </footer>
+  <footer class="footer-bottom">
+	<div class="container">
+	  <div class="row">
+		<div class="col-sm-6 col-12">
+		  <div class="copyright">
+			<p>Copyright © <script>
+				var CurrentYear = new Date().getFullYear()
+				document.write(CurrentYear)
+			  </script>. All Rights Reserved, theme by <a class="text-primary" href="index.php" target="_blank">servicin.com</a></p>
+		  </div>
+		</div>
+		<div class="col-sm-6 col-12">
+		  <ul class="social-media-icons text-right">
+			<li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher" target="_blank"></a></li>
+			<li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher" target="_blank"></a></li>
+			<li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher" target="_blank"></a></li>
+			<li><a class="fa fa-vimeo" href=""></a></li>
+		  </ul>
+		</div>
+	  </div>
+	</div>
+	<div class="top-to">
+	  <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
+	</div>
+  </footer>
+  
+  <script src="plugins/jQuery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/js/popper.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
+  
+  <script src="plugins/tether/js/tether.min.js"></script>
+  <script src="plugins/raty/jquery.raty-fa.js"></script>
+  <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+  <script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+  <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+  <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+  <script src="plugins/google-map/gmap.js"></script>
+  <script src="js/script.js"></script>
+  
+  </body>
+  
+  </html>
 
 
 
