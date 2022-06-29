@@ -220,7 +220,6 @@
 <div class="product-grid-list">
 	<div class="row mt-30">
 		<div class="col-sm-12 col-lg-4 col-md-6">
-			<!-- product card -->
 			<?php
   				include('conexao.php');
 				$sql_code = "SELECT a1.*, c1.categoria_nome, u1.email FROM `anuncio` a1 LEFT JOIN categorias c1 on (a1.categoria_id = c1.categoria_id) LEFT JOIN usuarios U1 ON (A1.usuario_id = U1.id)";
@@ -231,9 +230,8 @@
 			<div class="product-item bg-light">
 				<div class="card">
 					<div class="thumb-content">
-						<!-- <div class="price">$200</div> -->
-						<a href="single.html">
-							<img class="card-img-top img-fluid" src="<?php echo $arquivo['imagem_path'];?>" alt="Card image cap">
+						<a href="">
+							<img class="card-img-top img-fluid" src="<?php echo $arquivo['imagem_path'];?>" alt="Imagem">
 						</a>
 					</div>
 					<div class="card-body">
